@@ -1,2 +1,2 @@
 # DnD_bot
-Discord to ease the DnD gameplay during covid pandemic.
+Discord Bot to ease the DnD gameplay during covid pandemic.
