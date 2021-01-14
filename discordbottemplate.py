@@ -31,7 +31,7 @@ log.setLevel(LOG_LVL)
 
 
 # The bot   
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='_')
 print("bot type:", type(bot))
 bot.remove_command('help')
 
@@ -52,6 +52,18 @@ async def add(ctx, a, b):
             
     c = int(a)+int(b)
     await ctx.send('{} + {} = {}'.format(a,b,c))
+
+@bot.command(name="roll") ############################ROLL COMMAND##################################
+async def roll(ctx, die):
+    xdy=die.split("d")
+    xd=int(xdy[0])
+    xy=int(xdy[1])
+    total=[]
+    for i in range(xd):
+        dy=random.randint(1,xy)
+        total.append(dy)
+        print(dy)
+    await ctx.send("{}\n**Sum:** {}".format(total,sum(total)))
 
 @bot.command(name='hello', aliases=['hi','lol'])
 async def add(ctx):
