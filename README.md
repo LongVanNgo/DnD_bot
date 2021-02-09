@@ -15,3 +15,4 @@ Bot can be called with commands in Discord channel
 _help
 ```
 # Sources
+[Discord queue bot](https://github.com/jonascj/discord-help-queue-bot) by [jonascj](https://github.com/jonascj)
