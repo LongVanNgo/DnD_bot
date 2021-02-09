@@ -8,6 +8,6 @@ pip install discord.py python-dotenv
 
 
 ## Commands
-´´´
+```
 test
-´´´
+```
