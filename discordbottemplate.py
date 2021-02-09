@@ -60,9 +60,11 @@ async def verb(ctx, a, b):
     await ctx.send('{} + {} = {}'.format(a,b,c))
 ############################ CHARACTER ##############################
 @bot.command(name='spawn', aliases=['summon','build','create'])
-async def spawn(ctx, name, score, savingthrow, mod, save, attack, hp, maxhp):
-    newcharacter = Character(name,[score],[savingthrow],[mod],save, attack, hp, maxhp)
-    sukakog = Character("sukakog",[16,16,16,16,16,16],[3,3,3,3,6,6],[3,3,3,3,3,3],15,7,48,48)
+async def spawn(ctx, name, score_str,score_dex,score_con,score_int,score_wis,score_chr,st_str, st_dex, st_con, st_int, st_wis,st_chr,mod_str,mod_dex,mod_con,mod_int,mod_wis,mod_chr,save,atk,hp,maxhp,ac,init):
+    #newcharacter = Character(name,[score],[savingthrow],[mod],save, attack, hp, maxhp)
+    #sukakog = Character("sukakog",[16,16,16,16,16,16],[3,3,3,3,6,6],[3,3,3,3,3,3],15,7,48,48)
+    con.execute("INSERT INTO character (name, score_str,score_dex,score_con,score_int,score_wis,score_chr,st_str, st_dex, st_con, st_int, st_wis,st_chr,mod_str,mod_dex,mod_con,mod_int,mod_wis,mod_chr,save,atk,hp,maxhp,ac,init) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (name, score_str,score_dex,score_con,score_int,score_wis,score_chr,st_str, st_dex, st_con, st_int, st_wis,st_chr,mod_str,mod_dex,mod_con,mod_int,mod_wis,mod_chr,save,atk,hp,maxhp,ac,init))
+    con.commit()
     await ctx.send(name)
 #ctx.author.roles??? #TODO
 

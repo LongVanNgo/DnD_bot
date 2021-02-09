@@ -4,7 +4,7 @@ import discord
 
 
 class Character:
-    def __init__(self, name, score,savingthrow, mod,save,attack,hp,maxhp):
+    def __init__(self, name, score_str,score_dex,score_con,score_int,score_wis,score_chr,st_str, st_dex, st_con, st_int, st_wis,st_chr,mod_str,mod_dex,mod_con,mod_int,mod_wis,mod_chr,save,atk,hp,maxhp,ac,init):
         self.name = name
         self.score = score
         self.savingthrow = savingthrow
@@ -14,6 +14,7 @@ class Character:
         self.hp = hp
         self.maxhp = maxhp
 
+# TODO fix part
     def __str__(self):
         return f"**Details of** ***{self.name}***\n"\
         f"*Score:* {self.score}\n"\
