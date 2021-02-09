@@ -23,6 +23,10 @@ _roll xdy
 ```
 _roll 4d6
 ```
+### Spawn
+```
+spawn...
+```
 
 # Sources
 [Discord queue bot](https://github.com/jonascj/discord-help-queue-bot) by [jonascj](https://github.com/jonascj)
