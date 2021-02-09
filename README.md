@@ -19,7 +19,7 @@ Roll x dice with y dots
 ```
 _roll xdy
 ```
-####Example
+#### Example
 ```
 _roll 4d6
 ```
