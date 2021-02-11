@@ -147,91 +147,10 @@ async def help(ctx):
     #                value='Have the bot send a certain amount of memes to a user',
     #                inline=False)
 
-    embed.add_field(name='`!mememe amount subreddit',
-                    value="i don't want to help you lmao",
-                    inline=False)
 
     await ctx.send(embed=embed)
     await ctx.send(embed=embed)
 
-
-@bot.command(pass_context=True) 
-async def meme(ctx): 
-    embed = discord.Embed(title="", description="")
-    async with aiohttp.ClientSession() as cs:
-        async with cs.get('https://www.reddit.com/r/dankmemes/new.json?sort=top') as r:
-            res = await r.json()
-            embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
-            await ctx.send(embed=embed)
-
-@bot.command(pass_context=True)
-async def memeuser(ctx, user: discord.User,amount):
-    r = int(amount)
-    for i in range(r):
-        embed = discord.Embed(title="", description="")
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get('https://www.reddit.com/r/dankmemes/new.json?sort=top') as r:
-                res = await r.json()
-                embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
-                await user.send("hello {}".format(ctx.author.name),embed=embed,delete_after=30)
-
-@bot.command(pass_context=True, name="mememe",aliases=["Mememe"])
-async def mememe(ctx, amount=None, subreddit=None):#,user: discord.User
-    print("Amount type:",type(amount))
-    print("Subreddit type:",type(subreddit))
-    print("async def type:",type(mememe))
-    if amount != None:
-        try:
-            amount=int(amount)
-        except ValueError or TypeError:
-            print("Amount conversion failed")
-
-    if subreddit !=None:
-        try:
-            subreddit=int(subreddit)
-        except ValueError or TypeError:
-            print("Subreddit conversion failed")
-
-    if type(amount) == int and subreddit==None:
-        r = amount
-        subreddit = "dankmemes"
-        print("Input: !mememe amount")
-    elif type(amount) == int and type(subreddit)==str:
-        r = amount
-        subreddit = subreddit
-        print("Input: !mememe amount subreddit")
-    elif amount == None and subreddit == None:
-        r = 1
-        subreddit = "dankmemes"
-        print("Input: !mememe")
-    elif type(amount) == str and type(subreddit) == int:
-        r = subreddit
-        subreddit = amount
-        print("Input: !mememe subreddit amount")
-    elif type(amount) == str and subreddit==None:
-        subreddit = amount
-        r = 1
-        print("Input: !mememe subreddit")
-
-    print("Amount of memes generated:",r,
-        "Subreddit:", subreddit)
-
-    print("ctx:",type(ctx))
-    
-    for i in range(r):
-        embed = discord.Embed(title="", description="")
-        print("title:",type(embed))
-        async with aiohttp.ClientSession() as cs:
-            async with cs.get(f'https://www.reddit.com/r/{subreddit}/new.json?sort=top') as r:
-                res = await r.json()
-                embed.set_image(url=res['data']['children'] [random.randint(0, 25)]['data']['url'])
-                await ctx.author.send(embed=embed,delete_after=30)
-                print("aiohttp type:", type(cs))
-
-
-    #message = message or "This Message is sent via DM"
-    #await user.send(content=message, delete_after=10)
-    
 
 # Run the bot
 TOKEN = os.getenv('DISCORD_TOKEN')
